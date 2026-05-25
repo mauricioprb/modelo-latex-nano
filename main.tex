@@ -1,9 +1,7 @@
-% =============================================================================
 % TEMPLATE DE DISSERTAÇÃO/TESE - Programa de Pós-Graduação em Nanociências
 % Universidade Franciscana (UFN) - Santa Maria, RS
 % Conforme ABNT NBR 14724:2024, NBR 10520:2023, NBR 6023:2018, NBR 6028:2021
 % Estilo baseado no modelo oficial em .docx do PPG em Nanociências.
-% =============================================================================
 %
 % COMO USAR ESTE TEMPLATE (leia antes de começar):
 %
@@ -23,7 +21,6 @@
 %      - Suba o .zip inteiro via "New Project -> Upload Project".
 %      - Compilador: pdfLaTeX (Menu -> Settings -> Compiler).
 %
-% =============================================================================
 
 \documentclass[
     12pt,                    % Fonte 12pt (ABNT)
@@ -34,27 +31,24 @@
     brazil                   % Idioma: português do Brasil
 ]{abntex2}
 
-% -----------------------------------------------------------------------------
 % PACOTES
-% -----------------------------------------------------------------------------
 \usepackage[utf8]{inputenc}
 \usepackage[T1]{fontenc}
 
-% --- Símbolos matemáticos ANTES das fontes Times (evita conflitos) ----------
+% Símbolos matemáticos ANTES das fontes Times (evita conflitos)
 \usepackage{amsmath,amssymb}
 
-% --- Fonte Times New Roman (padrão do modelo UFN) --------------------------
+% Fonte Times New Roman (padrão do modelo UFN)
 % O pacote mathptmx aplica Times tanto no texto quanto na matemática,
 % sem os conflitos do newtxmath em ambientes mais antigos do TeX.
 \usepackage{mathptmx}                    % Times para texto e matemática
 \usepackage[scaled=0.92]{helvet}         % Helvetica como sans-serif
 \usepackage{courier}                     % Courier para fonte monoespaçada
-% ----------------------------------------------------------------------------
 
 \usepackage{indentfirst}                % Recua o primeiro parágrafo de seção
 \setlength{\parindent}{1.25cm}         % ABNT NBR 14724: recuo de 1,25cm
 
-% --- Corrige margem esquerda das listas (itemize/enumerate) ---
+% Corrige margem esquerda das listas (itemize/enumerate)
 % Faz bullets e números ficarem dentro da mancha de texto
 \AtBeginDocument{%
   \setlength{\leftmargini}{1.25cm}%
@@ -72,9 +66,7 @@
 \usepackage{subcaption}                 % Sub-figuras
 \usepackage{xcolor}                     % Cores
 
-% -----------------------------------------------------------------------------
 % BIBLIOGRAFIA - biblatex-abnt (NBR 6023:2018) com BibTeX
-% -----------------------------------------------------------------------------
 \usepackage[alf,abnt-emphasize=bf,abnt-thesis-year=both]{abntex2cite}
 
 % Corrige \cite para usar caixa normal no autor (Autor, ano) em vez de (AUTOR, ano)
@@ -85,9 +77,7 @@
 }
 \makeatother
 
-% -----------------------------------------------------------------------------
 % DADOS DO TRABALHO - *** PREENCHA AQUI OS SEUS DADOS ***
-% -----------------------------------------------------------------------------
 \titulo{Título da dissertação ou tese: subtítulo opcional após dois-pontos}
 \autor{Nome Completo do Autor ou da Autora}
 \local{Santa Maria, RS}
@@ -102,9 +92,7 @@
     título de Mestre em Nanociências.%
 }
 
-% -----------------------------------------------------------------------------
 % CONFIGURAÇÕES DE PDF
-% -----------------------------------------------------------------------------
 \usepackage{hyperref}
 \hypersetup{
     pdftitle={\@title},
@@ -120,9 +108,7 @@
     bookmarksdepth=4
 }
 
-% =============================================================================
 % AJUSTES DE ESTILO (mantêm o visual igual ao modelo .docx do PPG)
-% =============================================================================
 
 % Fonte padrão dos títulos principal: Times Roman 12pt
 % Capítulo: Negrito e Caixa Alta
@@ -148,7 +134,7 @@
 % Espaço entre o número e o texto nos títulos de seção para ficar igual aos capítulos (apenas 1 espaço simples)
 \setsecnumformat{\csname the#1\endcsname\space}
 
-% ------------- AJUSTES DO SUMÁRIO -------------
+% AJUSTES DO SUMÁRIO
 % Espaçamento de 1 espaço entre número e título no sumário (mantém recuos)
 \makeatletter
 \renewcommand{\numberline}[1]{#1~}
@@ -170,7 +156,7 @@
 \renewcommand{\cftsubsectionfont}{\bfseries}
 \renewcommand{\cftsubsectionpagefont}{\bfseries}
 
-% ------------- REFERÊNCIAS -------------
+% REFERÊNCIAS
 % Alinhamento à esquerda na página e espaçamento reduzido no sumário
 \makeatletter
 \renewcommand{\bibsection}{%
@@ -189,7 +175,6 @@
     \endgroup
 }
 \makeatother
-% ----------------------------------------------
 
 % Títulos dos elementos pré-textuais em CAIXA ALTA (estilo do docx UFN).
 % Usamos \addto\captionsbrazil porque o abntex2 redefine esses nomes
@@ -209,9 +194,8 @@
     \renewcommand{\listadesimbolosname}{LISTA DE SÍMBOLOS}%
 }
 
-% -----------------------------------------------------------------------------
 % CABEÇALHOS E NUMERAÇÃO (estilo do modelo .docx UFN)
-% -----------------------------------------------------------------------------
+%
 % Para remover completamente os textos de cabeçalho e a linha, 
 % mantendo apenas a numeração na direita em tamanho normal.
 \makepagestyle{abntheadings}
@@ -228,26 +212,20 @@
 \makeevenfoot{abntchapfirst}{}{}{}
 \makeoddfoot{abntchapfirst}{}{}{}
 
-% -----------------------------------------------------------------------------
 % COMANDOS PRÓPRIOS
-% -----------------------------------------------------------------------------
 \newcommand{\sigla}[2]{\item[\textbf{#1}] #2}      % Item de lista de siglas
 \newcommand{\simbolo}[2]{\item[\textbf{#1}] #2}    % Item de lista de símbolos
 
-% =============================================================================
 % INÍCIO DO DOCUMENTO
-% =============================================================================
 \begin{document}
 
-% --- Elimina páginas em branco forçadas pelo abntex2 internamente ---
+% Elimina páginas em branco forçadas pelo abntex2 internamente
 \renewcommand{\cleardoublepage}{\clearpage}
 
 \selectlanguage{brazil}
 \frenchspacing
 
-% -----------------------------------------------------------------------------
 % PARTE PRÉ-TEXTUAL
-% -----------------------------------------------------------------------------
 \pretextual
 
 \input{elementos/01-capa}                       % Obrigatório
@@ -269,9 +247,7 @@
 \tableofcontents*
 \clearpage
 
-% -----------------------------------------------------------------------------
 % PARTE TEXTUAL
-% -----------------------------------------------------------------------------
 \textual
 
 \input{capitulos/01-introducao}
@@ -280,9 +256,7 @@
 \input{capitulos/04-resultados}
 \input{capitulos/05-conclusoes}
 
-% -----------------------------------------------------------------------------
 % PARTE PÓS-TEXTUAL
-% -----------------------------------------------------------------------------
 \postextual
 
 % Referências bibliográficas (obrigatório - NBR 6023:2018)

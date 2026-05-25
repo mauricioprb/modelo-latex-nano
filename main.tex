@@ -35,10 +35,10 @@
 \usepackage[utf8]{inputenc}
 \usepackage[T1]{fontenc}
 
-% Símbolos matemáticos ANTES das fontes Times (evita conflitos)
+% Símbolos matemáticos ANTES das fontes Times 
 \usepackage{amsmath,amssymb}
 
-% Fonte Times New Roman (padrão do modelo UFN)
+% Fonte Times New Roman 
 % O pacote mathptmx aplica Times tanto no texto quanto na matemática,
 % sem os conflitos do newtxmath em ambientes mais antigos do TeX.
 \usepackage{mathptmx}                    % Times para texto e matemática
@@ -69,15 +69,14 @@
 % BIBLIOGRAFIA - biblatex-abnt (NBR 6023:2018) com BibTeX
 \usepackage[alf,abnt-emphasize=bf,abnt-thesis-year=both]{abntex2cite}
 
-% Corrige \cite para usar caixa normal no autor (Autor, ano) em vez de (AUTOR, ano)
 \makeatletter
 \let\oldabntrefinfo\abntrefinfo
 \renewcommand{\abntrefinfo}[3]{%
-  \oldabntrefinfo{#1}{#1}{#3}%  % usa caixa normal no IMPL também
+  \oldabntrefinfo{#1}{#1}{#3}% 
 }
 \makeatother
 
-% DADOS DO TRABALHO - *** PREENCHA AQUI OS SEUS DADOS ***
+% DADOS DO TRABALHO - PREENCHA AQUI OS SEUS DADOS
 \titulo{Título da dissertação ou tese: subtítulo opcional após dois-pontos}
 \autor{Nome Completo do Autor ou da Autora}
 \local{Santa Maria, RS}
@@ -108,7 +107,7 @@
     bookmarksdepth=4
 }
 
-% AJUSTES DE ESTILO (mantêm o visual igual ao modelo .docx do PPG)
+% AJUSTES DE ESTILO
 
 % Fonte padrão dos títulos principal: Times Roman 12pt
 % Capítulo: Negrito e Caixa Alta
@@ -124,18 +123,18 @@
 \renewcommand{\ABNTEXsubsectionfontsize}{\normalsize}
 \renewcommand{\ABNTEXsubsubsectionfontsize}{\normalsize}
 
-% Espaçamento ao redor dos títulos (estilo do docx UFN)
+% Espaçamento ao redor dos títulos
 \setlength{\afterchapskip}{\onelineskip}
 \setlength{\beforechapskip}{0pt}
 \setaftersecskip{\onelineskip}
 \setaftersubsecskip{\onelineskip}
 \setaftersubsubsecskip{\onelineskip}
 
-% Espaço entre o número e o texto nos títulos de seção para ficar igual aos capítulos (apenas 1 espaço simples)
+% Espaço entre o número e o texto nos títulos de seção para ficar igual aos capítulos
 \setsecnumformat{\csname the#1\endcsname\space}
 
 % AJUSTES DO SUMÁRIO
-% Espaçamento de 1 espaço entre número e título no sumário (mantém recuos)
+% Espaçamento de 1 espaço entre número e título no sumário
 \makeatletter
 \renewcommand{\numberline}[1]{#1~}
 \renewcommand{\chapternumberline}[1]{#1~}
@@ -176,7 +175,7 @@
 }
 \makeatother
 
-% Títulos dos elementos pré-textuais em CAIXA ALTA (estilo do docx UFN).
+% Títulos dos elementos pré-textuais em CAIXA ALTA
 % Usamos \addto\captionsbrazil porque o abntex2 redefine esses nomes
 % via babel-brazil DEPOIS do \begin{document}, então precisamos injetar
 % nossos nomes dentro da cadeia de hooks do babel.
@@ -194,7 +193,7 @@
     \renewcommand{\listadesimbolosname}{LISTA DE SÍMBOLOS}%
 }
 
-% CABEÇALHOS E NUMERAÇÃO (estilo do modelo .docx UFN)
+% CABEÇALHOS E NUMERAÇÃO
 %
 % Para remover completamente os textos de cabeçalho e a linha, 
 % mantendo apenas a numeração na direita em tamanho normal.
@@ -229,7 +228,7 @@
 \pretextual
 
 \input{elementos/01-capa}                       % Obrigatório
-\input{elementos/02-folha-rosto}                % Obrigatório (folha de rosto da UFN)
+\input{elementos/02-folha-rosto}                % Obrigatório 
 \input{elementos/03-ficha-catalografica}        % Obrigatório (placeholder)
 \input{elementos/04-folha-aprovacao}            % Obrigatório
 \input{elementos/05-dedicatoria}                % Opcional

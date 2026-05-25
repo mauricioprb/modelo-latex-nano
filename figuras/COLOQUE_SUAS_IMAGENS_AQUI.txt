@@ -1,0 +1,13 @@
+Coloque aqui as imagens da sua dissertacao (PNG, JPG, PDF).
+
+Para inserir uma imagem no texto, use:
+
+    \begin{figure}[htb]
+        \centering
+        \caption{Sua legenda aqui.}
+        \includegraphics[width=0.8\textwidth]{figuras/nome-do-arquivo}
+        \label{fig:meu-rotulo}
+        \fonte{Elaborado pelo autor.}
+    \end{figure}
+
+(Pode apagar este arquivo de texto quando comecar a usar.)

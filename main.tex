@@ -1,0 +1,303 @@
+% =============================================================================
+% TEMPLATE DE DISSERTAÇÃO/TESE - Programa de Pós-Graduação em Nanociências
+% Universidade Franciscana (UFN) - Santa Maria, RS
+% Conforme ABNT NBR 14724:2024, NBR 10520:2023, NBR 6023:2018, NBR 6028:2021
+% Estilo baseado no modelo oficial em .docx do PPG em Nanociências.
+% =============================================================================
+%
+% COMO USAR ESTE TEMPLATE (leia antes de começar):
+%
+% 1) Preencha seus dados na seção "DADOS DO TRABALHO" mais abaixo.
+%    São apenas seu nome, título, orientador, palavras-chave etc.
+%
+% 2) Cada parte do trabalho fica em um arquivo separado:
+%      elementos/  -> capa, folha de rosto, resumo, listas, sumário etc.
+%      capitulos/  -> Introdução, Fundamentação, Metodologia, Resultados,
+%                     Conclusões.
+%      apendices/  -> Apêndices opcionais.
+%      figuras/    -> Coloque aqui suas imagens (PNG, JPG, PDF).
+%
+% 3) Bibliografia: edite o arquivo referencias.bib (formato BibTeX).
+%
+% 4) Para compilar no Overleaf:
+%      - Suba o .zip inteiro via "New Project -> Upload Project".
+%      - Compilador: pdfLaTeX (Menu -> Settings -> Compiler).
+%
+% =============================================================================
+
+\documentclass[
+    12pt,                    % Fonte 12pt (ABNT)
+    openany,                 % Capítulos podem começar em qualquer página (sem páginas em branco)
+    oneside,                 % Apenas frente (desativa as margens alternadas do twoside)
+    a4paper,                 % Folha A4
+    sumario=tradicional,     % Sumário no padrão ABNT (NBR 6027)
+    brazil                   % Idioma: português do Brasil
+]{abntex2}
+
+% -----------------------------------------------------------------------------
+% PACOTES
+% -----------------------------------------------------------------------------
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+
+% --- Símbolos matemáticos ANTES das fontes Times (evita conflitos) ----------
+\usepackage{amsmath,amssymb}
+
+% --- Fonte Times New Roman (padrão do modelo UFN) --------------------------
+% O pacote mathptmx aplica Times tanto no texto quanto na matemática,
+% sem os conflitos do newtxmath em ambientes mais antigos do TeX.
+\usepackage{mathptmx}                    % Times para texto e matemática
+\usepackage[scaled=0.92]{helvet}         % Helvetica como sans-serif
+\usepackage{courier}                     % Courier para fonte monoespaçada
+% ----------------------------------------------------------------------------
+
+\usepackage{indentfirst}                % Recua o primeiro parágrafo de seção
+\setlength{\parindent}{1.25cm}         % ABNT NBR 14724: recuo de 1,25cm
+
+% --- Corrige margem esquerda das listas (itemize/enumerate) ---
+% Faz bullets e números ficarem dentro da mancha de texto
+\AtBeginDocument{%
+  \setlength{\leftmargini}{1.25cm}%
+  \setlength{\leftmarginii}{1.25cm}%
+}
+
+\usepackage{graphicx}                   % Inserir figuras
+\usepackage{microtype}                  % Melhora o espaçamento do texto
+\usepackage{chemformula}                % Fórmulas químicas (\ch{H2O} -> H₂O)
+\usepackage{booktabs}                   % Tabelas profissionais
+\usepackage{longtable}                  % Tabelas longas (multipágina)
+\usepackage{multirow}                   % Células mescladas
+\usepackage{siunitx}                    % Unidades do SI
+\usepackage{caption}                    % Legendas
+\usepackage{subcaption}                 % Sub-figuras
+\usepackage{xcolor}                     % Cores
+
+% -----------------------------------------------------------------------------
+% BIBLIOGRAFIA - biblatex-abnt (NBR 6023:2018) com BibTeX
+% -----------------------------------------------------------------------------
+\usepackage[alf,abnt-emphasize=bf,abnt-thesis-year=both]{abntex2cite}
+
+% Corrige \cite para usar caixa normal no autor (Autor, ano) em vez de (AUTOR, ano)
+\makeatletter
+\let\oldabntrefinfo\abntrefinfo
+\renewcommand{\abntrefinfo}[3]{%
+  \oldabntrefinfo{#1}{#1}{#3}%  % usa caixa normal no IMPL também
+}
+\makeatother
+
+% -----------------------------------------------------------------------------
+% DADOS DO TRABALHO - *** PREENCHA AQUI OS SEUS DADOS ***
+% -----------------------------------------------------------------------------
+\titulo{Título da dissertação ou tese: subtítulo opcional após dois-pontos}
+\autor{Nome Completo do Autor ou da Autora}
+\local{Santa Maria, RS}
+\data{\the\year}                                 % Ano atual ou número fixo
+\orientador{Prof.\ Dr.\ Nome do Orientador}
+\coorientador{Prof.\ Dr.\ Nome do Coorientador}  % Apague se não houver
+\instituicao{Universidade Franciscana --- UFN}
+\tipotrabalho{Dissertação (Mestrado)}            % Ou "Tese (Doutorado)"
+\preambulo{%
+    Dissertação apresentada ao Programa de Pós-Graduação em Nanociências
+    da Universidade Franciscana, como requisito parcial à obtenção do
+    título de Mestre em Nanociências.%
+}
+
+% -----------------------------------------------------------------------------
+% CONFIGURAÇÕES DE PDF
+% -----------------------------------------------------------------------------
+\usepackage{hyperref}
+\hypersetup{
+    pdftitle={\@title},
+    pdfauthor={\@author},
+    pdfsubject={\imprimirpreambulo},
+    pdfcreator={LaTeX with abntex2},
+    pdfkeywords={dissertação, nanociências, UFN, ABNT},
+    colorlinks=true,
+    linkcolor=black,
+    citecolor=black,
+    filecolor=black,
+    urlcolor=blue,
+    bookmarksdepth=4
+}
+
+% =============================================================================
+% AJUSTES DE ESTILO (mantêm o visual igual ao modelo .docx do PPG)
+% =============================================================================
+
+% Fonte padrão dos títulos principal: Times Roman 12pt
+% Capítulo: Negrito e Caixa Alta
+\renewcommand{\ABNTEXchapterfont}{\normalfont\bfseries}
+\renewcommand{\ABNTEXchapterfontsize}{\normalsize}
+
+% Seção (2º nível): Sem negrito e Caixa Alta
+\renewcommand{\ABNTEXsectionfont}{\normalfont}
+\renewcommand{\ABNTEXsectionfontsize}{\normalsize}
+\setboolean{ABNTEXuppersection}{true}
+
+% Subseção e Subsubseção
+\renewcommand{\ABNTEXsubsectionfontsize}{\normalsize}
+\renewcommand{\ABNTEXsubsubsectionfontsize}{\normalsize}
+
+% Espaçamento ao redor dos títulos (estilo do docx UFN)
+\setlength{\afterchapskip}{\onelineskip}
+\setlength{\beforechapskip}{0pt}
+\setaftersecskip{\onelineskip}
+\setaftersubsecskip{\onelineskip}
+\setaftersubsubsecskip{\onelineskip}
+
+% Espaço entre o número e o texto nos títulos de seção para ficar igual aos capítulos (apenas 1 espaço simples)
+\setsecnumformat{\csname the#1\endcsname\space}
+
+% ------------- AJUSTES DO SUMÁRIO -------------
+% Espaçamento de 1 espaço entre número e título no sumário (mantém recuos)
+\makeatletter
+\renewcommand{\numberline}[1]{#1~}
+\renewcommand{\chapternumberline}[1]{#1~}
+\makeatother
+
+% Seção (2º nível) no sumário: normal e CAIXA ALTA
+\renewcommand{\cftsectionfont}{\normalfont}
+\renewcommand{\cftsectionpagefont}{\normalfont}
+\makeatletter
+\let\oldl@section\l@section
+\def\l@section#1#2{%
+  \oldl@section{\MakeTextUppercase{#1}}{#2}%
+}
+\makeatother
+
+% Subseção (3º nível): negrito e sem caixa alta no texto e no sumário
+\renewcommand{\ABNTEXsubsectionfont}{\bfseries}
+\renewcommand{\cftsubsectionfont}{\bfseries}
+\renewcommand{\cftsubsectionpagefont}{\bfseries}
+
+% ------------- REFERÊNCIAS -------------
+% Alinhamento à esquerda na página e espaçamento reduzido no sumário
+\makeatletter
+\renewcommand{\bibsection}{%
+    \begingroup
+    % Força alinhamento à esquerda (não centralizado)
+    \def\printchaptertitle##1{\chaptitlefont\ABNTEXchapterupperifneeded{##1}}
+    \chapter*{\bibname}
+    \bibmark
+    \ifnobibintoc\else
+    \phantomsection
+    % Remove pulo de linha extra para o sumário (assemelhando-se às seções)
+    \addtocontents{toc}{\protect\vspace{-\cftbeforechapterskip}}
+    \addcontentsline{toc}{chapter}{\texorpdfstring{\MakeTextUppercase{\bibname}}{\bibname}}
+    \fi
+    \prebibhook
+    \endgroup
+}
+\makeatother
+% ----------------------------------------------
+
+% Títulos dos elementos pré-textuais em CAIXA ALTA (estilo do docx UFN).
+% Usamos \addto\captionsbrazil porque o abntex2 redefine esses nomes
+% via babel-brazil DEPOIS do \begin{document}, então precisamos injetar
+% nossos nomes dentro da cadeia de hooks do babel.
+\addto\captionsbrazil{%
+    \renewcommand{\resumoname}{RESUMO}%
+    \renewcommand{\listfigurename}{LISTA DE FIGURAS}%
+    \renewcommand{\listtablename}{LISTA DE TABELAS}%
+    \renewcommand{\contentsname}{SUMÁRIO}%
+    \renewcommand{\bibname}{REFERÊNCIAS}%
+    \renewcommand{\appendixname}{APÊNDICE}%
+    \renewcommand{\dedicatorianame}{DEDICATÓRIA}%
+    \renewcommand{\agradecimentosname}{AGRADECIMENTOS}%
+    \renewcommand{\epigraphname}{EPÍGRAFE}%
+    \renewcommand{\listadesiglasname}{LISTA DE ABREVIATURAS E SIGLAS}%
+    \renewcommand{\listadesimbolosname}{LISTA DE SÍMBOLOS}%
+}
+
+% -----------------------------------------------------------------------------
+% CABEÇALHOS E NUMERAÇÃO (estilo do modelo .docx UFN)
+% -----------------------------------------------------------------------------
+% Para remover completamente os textos de cabeçalho e a linha, 
+% mantendo apenas a numeração na direita em tamanho normal.
+\makepagestyle{abntheadings}
+\makeevenhead{abntheadings}{}{}{\normalsize\thepage}
+\makeoddhead{abntheadings}{}{}{\normalsize\thepage}
+\makeevenfoot{abntheadings}{}{}{}
+\makeoddfoot{abntheadings}{}{}{}
+\makeheadrule{abntheadings}{\textwidth}{0pt} % <-- Remove a linha do cabeçalho
+
+% Configuração para as páginas iniciais de capítulo
+\makepagestyle{abntchapfirst}
+\makeevenhead{abntchapfirst}{}{}{\normalsize\thepage}
+\makeoddhead{abntchapfirst}{}{}{\normalsize\thepage}
+\makeevenfoot{abntchapfirst}{}{}{}
+\makeoddfoot{abntchapfirst}{}{}{}
+
+% -----------------------------------------------------------------------------
+% COMANDOS PRÓPRIOS
+% -----------------------------------------------------------------------------
+\newcommand{\sigla}[2]{\item[\textbf{#1}] #2}      % Item de lista de siglas
+\newcommand{\simbolo}[2]{\item[\textbf{#1}] #2}    % Item de lista de símbolos
+
+% =============================================================================
+% INÍCIO DO DOCUMENTO
+% =============================================================================
+\begin{document}
+
+% --- Elimina páginas em branco forçadas pelo abntex2 internamente ---
+\renewcommand{\cleardoublepage}{\clearpage}
+
+\selectlanguage{brazil}
+\frenchspacing
+
+% -----------------------------------------------------------------------------
+% PARTE PRÉ-TEXTUAL
+% -----------------------------------------------------------------------------
+\pretextual
+
+\input{elementos/01-capa}                       % Obrigatório
+\input{elementos/02-folha-rosto}                % Obrigatório (folha de rosto da UFN)
+\input{elementos/03-ficha-catalografica}        % Obrigatório (placeholder)
+\input{elementos/04-folha-aprovacao}            % Obrigatório
+\input{elementos/05-dedicatoria}                % Opcional
+\input{elementos/06-agradecimentos}             % Opcional
+\input{elementos/07-epigrafe}                   % Opcional
+\input{elementos/08-resumo}                     % Obrigatório
+\input{elementos/09-abstract}                   % Obrigatório
+\input{elementos/10-lista-figuras}              % Opcional
+\input{elementos/11-lista-tabelas}              % Opcional
+\input{elementos/12-lista-siglas}               % Opcional
+\input{elementos/13-lista-simbolos}             % Opcional
+
+% Sumário (obrigatório, gerado automaticamente)
+\pdfbookmark[0]{\contentsname}{toc}
+\tableofcontents*
+\clearpage
+
+% -----------------------------------------------------------------------------
+% PARTE TEXTUAL
+% -----------------------------------------------------------------------------
+\textual
+
+\input{capitulos/01-introducao}
+\input{capitulos/02-fundamentacao}
+\input{capitulos/03-metodologia}
+\input{capitulos/04-resultados}
+\input{capitulos/05-conclusoes}
+
+% -----------------------------------------------------------------------------
+% PARTE PÓS-TEXTUAL
+% -----------------------------------------------------------------------------
+\postextual
+
+% Referências bibliográficas (obrigatório - NBR 6023:2018)
+\bibliography{referencias}
+
+% Apêndices (opcionais)
+\begin{apendicesenv}
+    \input{apendices/apendice-a}
+    \input{apendices/apendice-b}
+\end{apendicesenv}
+
+% Anexos (opcionais)
+% \begin{anexosenv}
+%     \partanexos
+%     \input{anexos/anexo-a}
+% \end{anexosenv}
+
+\end{document}

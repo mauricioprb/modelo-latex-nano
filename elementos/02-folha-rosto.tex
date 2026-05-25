@@ -1,0 +1,41 @@
+% FOLHA DE ROSTO (NBR 14724:2024) - elemento obrigatório
+%
+% Modelo oficial do PPG em Nanociências (UFN), conforme o .docx do programa.
+% Os dados vêm dos comandos preenchidos em main.tex.
+
+\begin{folhaderosto*}
+    \begin{center}
+        % --- Nome do(a) autor(a), no topo, em negrito
+        \vspace*{0.5cm}
+        \textbf{\MakeUppercase{\imprimirautor}}
+
+        \vspace{4cm}
+
+        % Título do trabalho, em CAIXA ALTA e negrito
+        \textbf{\MakeUppercase{\imprimirtitulo}}
+    \end{center}
+
+    \vspace{2cm}
+
+    % Preâmbulo justificado à direita (estilo ABNT)
+    \noindent\hspace{.45\textwidth}%
+    \begin{minipage}{.5\textwidth}
+        \SingleSpacing
+        \imprimirpreambulo
+    \end{minipage}
+
+    \vspace{1.5cm}
+
+    \begin{center}
+        % Orientação
+        Orientador: \textbf{\imprimirorientador}\\[4pt]
+        % Apague a linha abaixo se não houver coorientador:
+        Coorientador: \textbf{\imprimircoorientador}
+
+        \vfill
+
+        % Local e ano
+        \textbf{\imprimirlocal}\\[6pt]
+        \textbf{\imprimirdata}
+    \end{center}
+\end{folhaderosto*}
